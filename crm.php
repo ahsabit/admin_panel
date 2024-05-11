@@ -50,9 +50,13 @@
     $result_visits = mysqli_query($connection,$sql_visits);
     while ($row_visits = mysqli_fetch_assoc($result_visits)) {
         $visits = $row_visits["visits"];
+        $vis = $visits;
+        if ($visits == 0) {
+            $vis = 1;
+        }
         $users = $row_visits["user_num"];
     }
-    $convertion = floor(($users/$visits)*100);
+    $convertion = floor(($users/$vis)*100);
 
     $sql_camp = "select * from campaigns;";
     $result_camps = mysqli_query($connection,$sql_camp);

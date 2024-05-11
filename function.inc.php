@@ -1,7 +1,7 @@
 <?php
     function this_month_data($mon, $data){
         $u = 0;
-        while ($u != 12) {
+        while ($u < 11) {
             if ($mon[$u] == date("M")) {
                 if ($data[$u] == "null") {
                     return 0;
@@ -19,21 +19,26 @@
         }
     }
 
-    function this_month($mon){
-        $u = 0;
-        while ($u != 12) {
-            if ($mon[$u] == date("M")) {
-                return $mon[$u];
-            }elseif($mon[$u] == date("M")."."){
-                return $mon[$u];
+    function this_month($mon) {
+        $currentMonth = date("M");
+    
+        // Append a period to the current month abbreviation
+        $currentMonthWithPeriod = $currentMonth . ".";
+    
+        for ($u = 0; $u < 11; $u++) {
+            // Check if the month abbreviation matches either with or without a period
+            if ($mon[$u] == $currentMonth || $mon[$u] == $currentMonthWithPeriod) {
+                return $mon[$u]; // Return matching month abbreviation
             }
-            $u++;
         }
+    
+        return null; // Return null if current month abbreviation is not found in the array
     }
+    
 
     function pv_vs_this_month_data($mon, $data){
         $u = 0;
-        while ($u != 12) {
+        while ($u < 11) {
             if ($mon[$u] == date("M")) {
                 if ($data[$u] == "null") {
                     return floor(((0-$data[$u-1])/$data[$u-1])*100);

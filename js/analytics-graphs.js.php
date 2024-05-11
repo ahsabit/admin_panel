@@ -120,7 +120,7 @@
       ['Desktop',     <?php echo nullFinder($row_device['desktop']); ?>],
       ['Laptop',      <?php echo nullFinder($row_device['laptop']); ?>],
       ['Tablet',      <?php echo nullFinder($row_device['tablet']); ?>],
-      ['Smart Phone', <?php echo nullFinder($row_device['smart_phone']); ?>],
+      ['Smart Phone', <?php echo nullFinder($row_device['smart_phone']); ?>]
       <?php } ?>
     ]);
 
